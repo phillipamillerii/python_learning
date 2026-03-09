@@ -3,13 +3,19 @@
 import random
 import array 
 
+# Variable to help with output spacing. 
+space_variable = "-----------------------------------------------"
 
 def main():
-    # print("pass")
-    # print("user input >> " + user_input())
-    # print("Random Array >> ")
-    # Passed a number to the random array function
-    # random_array(5)
+    print("Called Main Sucessfully")
+    print(space_variable)
+    print("user input >> " + user_input())
+    print(space_variable)
+    print("Random Array >> ")
+
+    #Passed a number to the random array function
+    random_array(5)
+    print(space_variable)
     print(input_number())
 
 
@@ -28,6 +34,7 @@ def random_array(number_of_entries):
     # Type codes specify the data type of the array
     int_array = array.array('i', [])
     for _ in range(number_of_entries):
+    
         # creating a random integer between 0-9 and appending it to the basic array I initiallied above
         int_array.append(random.randint(0,9))
 
@@ -38,20 +45,25 @@ def random_array(number_of_entries):
 
 
 def print_array_elements(array_to_print):
+    
     # runs a process over every array element
+    print("Array output: ")
     for x in range(0,len(array_to_print)):
         print(array_to_print[x])
 
 
 def input_number():
+    
     # makes sure the input is specifically a number. 
     while True:
         user_input = input("input a integer : ").strip() # Get input and remove leading/trailing whitespace
         try:
+            
             # Attempt to convert the input to an integer
             integer_value = int(user_input)
             return integer_value # Return the integer value if successful
         except ValueError:
+            
             # Handle the error if the conversion fails
             print(f"'{user_input}' is not a valid integer. Please try again.")
 
