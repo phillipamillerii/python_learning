@@ -1,5 +1,7 @@
 # Phils Notes and Thoughts
-[Thread Processing](#processing-data-from-thread)
+- [Thread Processing](#processing-data-from-thread)
+
+- [March 13 - Script Output](#march-13---script-output)
 
 
 ## Processing Data from Thread
@@ -51,3 +53,43 @@ Using that I can set a more specific print process
     # Print the available queries after the thread is dead
     for _ in range(q.qsize()):
         print(q.get())
+
+
+### March 13 - script output
+    Called Main  Function Successfully
+    -----------------------------------------------
+    what do you want to input? : phillip
+    user input >> phillip
+    -----------------------------------------------
+    Random Array >>
+    array('i', [0, 5, 9, 7, 2])
+    Array output:
+    0
+    5
+    9
+    7
+    2
+    -----------------------------------------------
+    input a integer : 1
+    1
+    -----------------------------------------------
+    Thread A starting.
+    Thread B starting.
+    Thread B finished.
+    Thread A finished.
+    All threads finished.
+    -----------------------------------------------
+    Thread C starting.
+    Thread C finished.
+    Thread Dead
+    thread_status_test Complete
+    -----------------------------------------------
+    Thread Test starting.
+    test : Start Data From Thread
+    Thread Test finished.
+    2
+    New Data From Thread
+    Finished Data From Thread
+    Thread data pull complete
+    -----------------------------------------------
+    Completed Main
