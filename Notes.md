@@ -1,7 +1,9 @@
 # Phils Notes and Thoughts
-- [Thread Processing](#processing-data-from-thread)
 
-- [March 13 - Script Output](#march-13---script-output)
+- [Thread Processing](#processing-data-from-thread)
+    - [March 13 - Script Output](#march-13---script-output)
+- [Lists](#python-list)
+
 
 
 ## Processing Data from Thread
@@ -93,3 +95,11 @@ Using that I can set a more specific print process
     Thread data pull complete
     -----------------------------------------------
     Completed Main
+
+Next I'm trying to learn more about lists, dictionaries, sets, and tuples. 
+
+## Python list
+
+[Python list Docs](https://docs.python.org/3/tutorial/datastructures.html)
+
+

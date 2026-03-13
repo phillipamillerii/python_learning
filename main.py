@@ -11,7 +11,7 @@ space_variable = "-----------------------------------------------"
 def main():
     print("Called Main  Function Successfully")
     print(space_variable)
-    
+    """
     print("user input >> " + user_input())
     print(space_variable)
     print("Random Array >> ")
@@ -26,12 +26,34 @@ def main():
     thread_status_test()
     print(space_variable)
     thread_data_pull()
+    """
+    list_tests()
+    print("Completed Main")
+    print(space_variable)
     
 
+def print_list(list):
+    for x in list:
+        print(x)
+
+
+def list_tests():
+    # create lists
+    empty_list = [] 
+    basic_list = ["lions", "tigers", "bears"]
+
+    # add elements to a list
+    for x in range(6):
+        empty_list.append(x)
+        basic_list.append(x)
+    
+    print_list(empty_list)
     print(space_variable)
-    print("Completed Main")
     
-    
+    print_list(basic_list)
+    print(space_variable)
+
+
 
 
      
