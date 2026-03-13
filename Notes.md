@@ -45,3 +45,9 @@ Going over the [documentation for the queue module](https://docs.python.org/3/li
 
     Return the approximate size of the queue. Note, qsize() > 0 doesn’t guarantee that a subsequent get() will not block, nor will qsize() < maxsize guarantee that put() will not block.
 
+
+Using that I can set a more specific print process
+    
+    # Print the available queries after the thread is dead
+    for _ in range(q.qsize()):
+        print(q.get())

@@ -11,7 +11,7 @@ space_variable = "-----------------------------------------------"
 def main():
     print("Called Main  Function Successfully")
     print(space_variable)
-    """
+    
     print("user input >> " + user_input())
     print(space_variable)
     print("Random Array >> ")
@@ -26,7 +26,7 @@ def main():
     thread_status_test()
     print(space_variable)
     thread_data_pull()
-    """
+    
 
     print(space_variable)
     print("Completed Main")

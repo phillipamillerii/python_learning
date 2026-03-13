@@ -123,9 +123,10 @@ def thread_data_pull():
     print("test : " + q.get())
     t.join()
 
+    # Print the size of the queue
     print(q.qsize())
-    # Print the available queries after the thread is dead
-    for _ in range(2):
+    # Print the available queue after the thread is dead
+    for _ in range(q.qsize()):
         print(q.get())
     
     print("Thread data pull complete")
