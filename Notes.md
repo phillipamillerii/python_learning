@@ -3,6 +3,12 @@
 - [Thread Processing](#processing-data-from-thread)
     - [March 13 - Script Output](#march-13---script-output)
 - [Lists](#python-list)
+    - [Adding Elements to list](#adding-elements-to-a-list)
+        - [End of a list](#end-of-a-list)
+        - [All elements from one list to another](#all-elements-from-one-list-to-another)
+        - [Adding element at a specific location](#adding-element-at-a-specific-location)
+    - [Removing Elements from a list](#removing-elements-from-a-list)
+    
 
 
 
@@ -101,5 +107,25 @@ Next I'm trying to learn more about lists, dictionaries, sets, and tuples.
 ## Python list
 
 [Python list Docs](https://docs.python.org/3/tutorial/datastructures.html)
+
+### Adding elements to a list 
+
+#### End of a list
+    
+    list_name.append(Adding_element)
+
+#### All elements from one list to another
+Adding all elements from one list to another. Requires any type of iterable (list, set, tuple, etc.) in place of the old_list_name
+
+    list_name.extend(old_list_name)
+
+#### Adding element at a specific location 
+
+    list_name.insert(Number_location, Data_adding)
+
+
+Insert an item at a given position. The first argument is the index of the element before which to insert, so a.insert(0, x) inserts at the front of the list, and a.insert(len(a), x) is equivalent to a.append(x).
+
+### Removing Elements from a list
 
 

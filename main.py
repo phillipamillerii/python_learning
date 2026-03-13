@@ -40,7 +40,10 @@ def print_list(list):
 def list_tests():
     # create lists
     empty_list = [] 
+    empty_list2 = []
     basic_list = ["lions", "tigers", "bears"]
+
+    empty_list2.extend(basic_list)
 
     # add elements to a list
     for x in range(6):
@@ -53,8 +56,14 @@ def list_tests():
     print_list(basic_list)
     print(space_variable)
 
+    print_list(empty_list2)
+    print(space_variable)
 
+    for x in range(5):
+        basic_list.remove(x)
 
+    print_list(basic_list)
+    print(space_variable)
 
      
 
