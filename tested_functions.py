@@ -11,6 +11,9 @@ import time
 import queue
 
 
+space_variable = "-----------------------------------------------"
+
+
 # User input, return input
 # can perform processes on the variable (check that it contains certain characters, is a specific length, etc..)
 def user_input():
@@ -131,3 +134,38 @@ def thread_data_pull():
     
     print("Thread data pull complete")
 
+
+def print_list(list):
+    for x in list:
+        print(x)
+
+
+def list_tests():
+    # create lists
+    empty_list = [] 
+    empty_list2 = []
+    basic_list = ["lions", "tigers", "bears"]
+
+    empty_list2.extend(basic_list)
+
+    # add elements to a list
+    for x in range(6):
+        empty_list.append(x)
+        basic_list.append(x)
+    
+    print_list(empty_list)
+    print(space_variable)
+    
+    print_list(basic_list)
+    print(space_variable)
+
+    print_list(empty_list2)
+    print(space_variable)
+
+    for x in range(5):
+        basic_list.remove(x)
+
+    print_list(basic_list)
+    print(space_variable)
+
+    

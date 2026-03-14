@@ -15,7 +15,6 @@ def main():
     print("user input >> " + user_input())
     print(space_variable)
     print("Random Array >> ")
-
     #Passed a number to the random array function
     random_array(5)
     print(space_variable)
@@ -26,46 +25,12 @@ def main():
     thread_status_test()
     print(space_variable)
     thread_data_pull()
-    """
     list_tests()
+    """
+
     print("Completed Main")
     print(space_variable)
     
-
-def print_list(list):
-    for x in list:
-        print(x)
-
-
-def list_tests():
-    # create lists
-    empty_list = [] 
-    empty_list2 = []
-    basic_list = ["lions", "tigers", "bears"]
-
-    empty_list2.extend(basic_list)
-
-    # add elements to a list
-    for x in range(6):
-        empty_list.append(x)
-        basic_list.append(x)
-    
-    print_list(empty_list)
-    print(space_variable)
-    
-    print_list(basic_list)
-    print(space_variable)
-
-    print_list(empty_list2)
-    print(space_variable)
-
-    for x in range(5):
-        basic_list.remove(x)
-
-    print_list(basic_list)
-    print(space_variable)
-
-     
 
 if __name__ == "__main__":
     # Used to execute code only when the file is run as a standalone script

@@ -8,6 +8,8 @@
         - [All elements from one list to another](#all-elements-from-one-list-to-another)
         - [Adding element at a specific location](#adding-element-at-a-specific-location)
     - [Removing Elements from a list](#removing-elements-from-a-list)
+- [Project Idea - ATM](#project-idea---atm)
+
     
 
 
@@ -128,4 +130,21 @@ Insert an item at a given position. The first argument is the index of the eleme
 
 ### Removing Elements from a list
 
+    list_name.remove(x)
 
+Remove the first item from the list whose value is equal to x. It will return an error if the value doesn't exist.
+
+## Project Idea - ATM
+I started thinking about what ways I might be able to create something that is useful. So I'm going to try and create some kind of an ATM. 
+
+Elements I need: 
+- User Interface (UI): A graphical interface (typically JTextArea/JPanels in simulations) managing menu navigation, transaction prompts, and error messages.
+    - Authentication Module: Secure input and validation of PINs and card data.
+- Functional Transactions:
+    - Withdrawals: Communicates with cash dispensers and deducts funds.
+    - Deposits: Processes check or cash deposits.
+    - Balance Inquiries: Queries the bank database for real-time account balances.
+    - Transfers: Moves funds between connected accounts.
+- Networking & Backend: Connects the ATM to the bank's core banking system to securely transmit data and authorize transactions.
+- Hardware Interface Layer: Software controlling the card reader, keypad, receipt printer, and cash dispenser.
+- Logging & Security: Logs transaction logs for auditing and compliance, ensures end-to-end encryption, and manages session timeouts. 
