@@ -31,12 +31,15 @@ def main():
 
     bankdatabase = database()
 
-    bankdatabase.Add_user("phillip", "password")
+    # bankdatabase.Add_user("phillip", "password")
     # bankdatabase.update_user("phillip Miller", "new_password_again", 3)
     # bankdatabase.remove_user(13)
     # Password tests using hash
     # bankdatabase.verify_account_pass(1, "password")
     # bankdatabase.verify_account_pass(1, "password2")
+    
+    login(bankdatabase)
+    
     bankdatabase.close()
 
     print("Completed Main")
@@ -125,21 +128,33 @@ class database:
         else:
             print("Account not found.")
             return False
-
-
     
+    def user_info(self, account, password):
+        user_info_query = """
+            SELECT * FROM Users WHERE Account = ?
+        """
+        if self.verify_account_pass(account, password):
+            self.cur.execute(user_info_query, (account,))
+            result = self.cur.fetchone()
+            if result:
+                print(result)
+                return True
+            else:
+                print("Query Failed")
+                return False
+        else:
+            print("Account/Password failed")
+            return False
+        
     def close(self):
         self.conn.commit()
         self.conn.close()
 
 
-
-
-
-
-
-
-
+def login(bankdatabase):
+    account = input("Account Number : ")
+    password = input("Password : ")
+    bankdatabase.user_info(account, password)
 
 if __name__ == "__main__":
     # Used to execute code only when the file is run as a standalone script
