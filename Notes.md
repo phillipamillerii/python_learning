@@ -148,3 +148,26 @@ Elements I need:
 - Networking & Backend: Connects the ATM to the bank's core banking system to securely transmit data and authorize transactions.
 - Hardware Interface Layer: Software controlling the card reader, keypad, receipt printer, and cash dispenser.
 - Logging & Security: Logs transaction logs for auditing and compliance, ensures end-to-end encryption, and manages session timeouts. 
+
+### Progress - 3.15.26
+- Created a basic database
+    - using sqlite3
+    - Contains
+        - Account number
+            - Auto incremented number, may want to try something else for creating the account number as it currently starts a 1 and goes up from there
+        - user_name
+            - User provided and doesn't verify there isn't already an Account with the same user_name
+            - Currently not being used for loging in, for that we are using the Account number
+        - user_password
+            - for this I implamented a hash process using bcrypt, so we are saving the hash in the database
+                - May want to look into secure hashing methods
+        - created_at
+            - this using a sql CURRENT_TIMESTAMP when the user is added to the database
+        - last_updated
+            - For this I'm just updating the timestamp manually when we are updating the users information
+                - May want to look into triggers, I attempted this and I wasn't able to get something working
+    - Needs
+        - account types
+            - Banks have different types of accounts, so it mmaybe a good idea to set those
+                - Although I'm not sure what the best option would be to allow for an account to have multiple account types ( saving, credit, CD, etc. )  
+        - 
