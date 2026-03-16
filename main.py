@@ -31,14 +31,14 @@ def main():
 
     bankdatabase = database()
 
-    # bankdatabase.Add_user("phillip", "password")
+    bankdatabase.Add_user("phillip", "password")
     # bankdatabase.update_user("phillip Miller", "new_password_again", 3)
     # bankdatabase.remove_user(13)
     # Password tests using hash
     # bankdatabase.verify_account_pass(1, "password")
     # bankdatabase.verify_account_pass(1, "password2")
-    
-    login(bankdatabase)
+    # bankdatabase.update_userpassword("password2", 4)
+    # bankdatabase.update_username("Phillip 2", "password2", 4)
     
     bankdatabase.close()
 
@@ -54,7 +54,9 @@ class database:
             CREATE TABLE IF NOT EXISTS Users(
                 Account INTEGER PRIMARY KEY AUTOINCREMENT, 
                 user_name VARCHAR, 
-                user_password BLOB NOT NULL, 
+                user_password BLOB NOT NULL,
+                funds INTEGER, 
+                currency_code VARCHAR,
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
                 last_access TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             )
@@ -73,30 +75,54 @@ class database:
         create_users_query = """
             INSERT INTO Users (
             user_name = ?, 
-            user_password = ?
+            user_password = ?,
+            funds = 0,
+            currency_code = "USD"
             ) 
         """
         hashed = self.hash_password(password)
-        self.cur.execute("INSERT INTO Users (user_name, user_password) values (?, ?)", (username, hashed))
+        self.cur.execute("INSERT INTO Users (user_name, user_password, funds, currency_code) values (?, ?, 0, 'USD')", (username, hashed))
         self.conn.commit()
 
-    def update_user(self, username, password, account):
+    def update_userpassword(self, password, account):
+        # May want to look into restricting this as it's not performing verifacation before updating the password
         hashed = self.hash_password(password)
         try:
-            
             update_query = """
                 UPDATE Users 
-                SET user_name = ?, user_password = ?, last_access = CURRENT_TIMESTAMP
+                SET user_password = ?, last_access = CURRENT_TIMESTAMP
                 WHERE Account = ?
                 """
-            self.cur.execute(update_query, (username, hashed, account))
+            self.cur.execute(update_query, (hashed, account))
 
         except sqlite3.Error as e:
             print(f"An error occurred: {e}")
         
         finally:
+            print("Password Updated Successfully")
             if self.conn:
                 self.conn.commit()
+
+    def update_username(self, username, password, account):
+        if self.verify_account_pass(account, password):
+            try:
+                update_query = """
+                    UPDATE Users 
+                    SET user_name = ?, last_access = CURRENT_TIMESTAMP
+                    WHERE Account = ?
+                    """
+                self.cur.execute(update_query, (username, account))
+
+            except sqlite3.Error as e:
+                print(f"An error occurred: {e}")
+            
+            finally:
+                print("Username Updated Successfully")
+                if self.conn:
+                    self.conn.commit()
+        else:
+            print("Update Username failed")
+            return False
 
     def remove_user(self, account):
         delete_query = """
@@ -120,10 +146,10 @@ class database:
         
             # bcrypt.checkpw handles the comparison and salting automatically
             if bcrypt.checkpw(entered_password_bytes, stored_hash):
-                print(f"Password match! Account : {account} Login successful.")
+                print(f"Password match! Account : {account} - Login successful.")
                 return True
             else:
-                print("Incorrect password.")
+                print("Incorrect Account/Password")
                 return False
         else:
             print("Account not found.")
@@ -145,7 +171,15 @@ class database:
         else:
             print("Account/Password failed")
             return False
-        
+    
+    def add_funds(self, account, password, funds):
+        current_funds_query = """
+            SELECT funds FROM Users WHERE Account = ? 
+        """
+        if self.verify_account_pass(account, password):
+            current_funds = ""
+            
+
     def close(self):
         self.conn.commit()
         self.conn.close()

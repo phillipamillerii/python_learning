@@ -170,4 +170,6 @@ Elements I need:
         - account types
             - Banks have different types of accounts, so it mmaybe a good idea to set those
                 - Although I'm not sure what the best option would be to allow for an account to have multiple account types ( saving, credit, CD, etc. )  
-        - 
+        - Permissions
+            - For users and admins
+        
