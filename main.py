@@ -5,9 +5,29 @@ from tested_functions import *
 import sqlite3
 import bcrypt
 
+import logging
+
 # Global Variables - output spacing 
 space_variable = "-----------------------------------------------"
 db_file = './data/bank.sqlite'
+app_log_file = 'main_log_file'
+
+
+# Starting Logging
+"""
+open(app_log_file, "a") as f:
+    f.write("New Content\n")
+"""
+logging.basicConfig(filename=app_log_file,
+                    filemode='a',
+                    format='%(asctime)s,%(msecs)03d %(name)s %(levelname)s %(message)s',
+                    datefmt='%Y-%m-%d %H:%M:%S',
+                    level=logging.DEBUG)
+
+logging.info("Running Python Learning Script")
+
+logger = logging.getLogger('py_learning_script')
+
 
 def main():
     print("Called Main  Function Successfully")

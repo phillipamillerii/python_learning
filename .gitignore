@@ -207,3 +207,4 @@ marimo/_lsp/
 __marimo__/
 data/bank.sqlite
 data/bank.sqlite-x-Users-1-user_password.bin
+main_log_file
