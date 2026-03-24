@@ -15,8 +15,9 @@ import queue
 import sqlite3
 import bcrypt
 
+# Global Variables  
 space_variable = "-----------------------------------------------"
-
+db_file = './data/bank.sqlite'
 app_log_file = 'main_log_file'
 log_level = logging.DEBUG
 
