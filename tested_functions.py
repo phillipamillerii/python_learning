@@ -1,18 +1,4 @@
-import random
-import array
-
-# Threading tests
-import threading
-
-# used for sleep - time.sleep(duration)
-import time
-
-# using with threads to try and pull data 
-import queue
-
-
-space_variable = "-----------------------------------------------"
-
+from config import *
 
 # User input, return input
 # can perform processes on the variable (check that it contains certain characters, is a specific length, etc..)
@@ -24,7 +10,6 @@ def user_input():
 
 # Create an array and populate it with random numbers 0-9 for the number of times passed to the function
 def random_array(number_of_entries):
-
     # Create an integer array with type code 'i' (signed integer)
     # Type codes specify the data type of the array
     int_array = array.array('i', [])
@@ -37,10 +22,9 @@ def random_array(number_of_entries):
     # Will want to change this to a basic return in the future 
     print(int_array)
     print_array_elements(int_array)
-
+    logger.info("Random Array Created")
 
 def print_array_elements(array_to_print):
-    
     # runs a process over every array element
     print("Array output: ")
     for x in range(0, len(array_to_print)):
@@ -48,20 +32,20 @@ def print_array_elements(array_to_print):
 
 
 def input_number():
-
     # makes sure the input is specifically a number. 
     while True:
         # Get input and remove leading/trailing whitespace
         user_input = input("input a integer : ").strip()
         try:
-            
             # Attempt to convert the input to an integer
             integer_value = int(user_input)
+            # output to logs
+            logger.info('Successfully Entered Number')
             # Return the integer value if successful
             return integer_value
         except ValueError:
-            
             # Handle the error if the conversion fails
+            logger.warning('Invalid Number Entered')
             print(f"'{user_input}' is not a valid integer. Please try again.")
 
 

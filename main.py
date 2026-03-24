@@ -1,11 +1,7 @@
 # Import section 
 # example pull from file : from file_name import script/module
 from tested_functions import *
-
-import sqlite3
-import bcrypt
-
-import logging
+from config import *
 
 # Global Variables - output spacing 
 space_variable = "-----------------------------------------------"
@@ -18,33 +14,25 @@ app_log_file = 'main_log_file'
 open(app_log_file, "a") as f:
     f.write("New Content\n")
 """
-logging.basicConfig(filename=app_log_file,
-                    filemode='a',
-                    format='%(asctime)s,%(msecs)03d %(name)s %(levelname)s %(message)s',
-                    datefmt='%Y-%m-%d %H:%M:%S',
-                    level=logging.DEBUG)
 
-logging.info("Running Python Learning Script")
 
-logger = logging.getLogger('py_learning_script')
+
+
 
 
 def main():
-    print("Called Main  Function Successfully")
-    print(space_variable)
+    logger.info('Called Main Function Successfully')
+
     """
     print("user input >> " + user_input())
-    print(space_variable)
     print("Random Array >> ")
     #Passed a number to the random array function
     random_array(5)
-    print(space_variable)
+    """
     print(input_number())
-    print(space_variable)
+    """
     threading_test()
-    print(space_variable)
     thread_status_test()
-    print(space_variable)
     thread_data_pull()
     list_tests()
     """
@@ -62,7 +50,7 @@ def main():
     
     bankdatabase.close()
 
-    print("Completed Main")
+    logger.info('Completed Main Function')
     print(space_variable)
 
 class database:
@@ -87,6 +75,7 @@ class database:
     def hash_password(self, password):
         # Passwords must be encoded to bytes
         password_bytes = password.encode('utf-8')
+
         # bcrypt automatically generates a salt and includes it in the hash
         hashed_bytes = bcrypt.hashpw(password_bytes, bcrypt.gensalt())
         return hashed_bytes
@@ -103,6 +92,7 @@ class database:
         hashed = self.hash_password(password)
         self.cur.execute("INSERT INTO Users (user_name, user_password, funds, currency_code) values (?, ?, 0, 'USD')", (username, hashed))
         self.conn.commit()
+        logger.info('User Created')
 
     def update_userpassword(self, password, account):
         # May want to look into restricting this as it's not performing verifacation before updating the password
