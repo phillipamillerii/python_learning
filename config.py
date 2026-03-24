@@ -23,7 +23,7 @@ log_level = logging.DEBUG
 logger = logging.getLogger('py_learning_script')
 logging.basicConfig(filename=app_log_file,
                     filemode='a',
-                    format='%(asctime)s,%(msecs)03d %(name)s %(levelname)s %(message)s',
+                    format='%(asctime)s,%(msecs)03d %(name)s %(levelname)s : %(message)s',
                     datefmt='%Y-%m-%d %H:%M:%S',
                     level=log_level)
 

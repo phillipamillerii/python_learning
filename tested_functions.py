@@ -7,7 +7,6 @@ def user_input():
     return_variable = variable_input
     return return_variable
 
-
 # Create an array and populate it with random numbers 0-9 for the number of times passed to the function
 def random_array(number_of_entries):
     # Create an integer array with type code 'i' (signed integer)
@@ -30,7 +29,6 @@ def print_array_elements(array_to_print):
     for x in range(0, len(array_to_print)):
         print(array_to_print[x])
 
-
 def input_number():
     # makes sure the input is specifically a number. 
     while True:
@@ -40,21 +38,22 @@ def input_number():
             # Attempt to convert the input to an integer
             integer_value = int(user_input)
             # output to logs
-            logger.info('Successfully Entered Number')
+            logger.info('Call to input_number Function Successful')
             # Return the integer value if successful
             return integer_value
         except ValueError:
             # Handle the error if the conversion fails
-            logger.warning('Invalid Number Entered')
+            logger.warning('Call to input_number Function Failed')
             print(f"'{user_input}' is not a valid integer. Please try again.")
-
 
 def threading_test():
     # Used for starting a thread that is just sleeping
     def my_task(name, duration):
-        print(f"Thread {name} starting.")
+        print(f'Thread {name} Starting')
+        logger.info(f'Thread {name} Started')
         time.sleep(duration)
-        print(f"Thread {name} finished.")
+        print(f'Thread {name} Finished.')
+        logger.info(f'Thread {name} Finished')
     
     # Create and start threads
     t1 = threading.Thread(target=my_task, args=("A", 5))
@@ -72,8 +71,10 @@ def thread_status_test():
     # tests  the thread is_alive process
     def my_task(name, duration):
         print(f"Thread {name} starting.")
+        logger.info(f'Thread {name} Started')
         time.sleep(duration)
-        print(f"Thread {name} finished.")
+        print(f"Thread {name} Finished.")
+        logger.info(f'Thread {name} Finished')
 
     t3 = threading.Thread(target=my_task, args=("C", 2))
     t3.start()
@@ -85,8 +86,8 @@ def thread_status_test():
         print("Thread Alive")
     else:
         print("Thread Dead")
+    logger.info(f'thread_status_test Complete')
 
-    print("thread_status_test Complete")
 
 
 # pulling data from a threaded process

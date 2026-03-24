@@ -9,6 +9,8 @@
         - [Adding element at a specific location](#adding-element-at-a-specific-location)
     - [Removing Elements from a list](#removing-elements-from-a-list)
 - [Project Idea - ATM](#project-idea---atm)
+    - [update](#progress---31526)
+- [Logging](#logging)
 
     
 
@@ -173,3 +175,5 @@ Elements I need:
         - Permissions
             - For users and admins
         
+## Logging
+I started messing with Logging some more and the one big thing I've run into is that the log file is only written to when the script is complete. Which may cause issues if the script is killed before the log is written.   

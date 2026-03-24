@@ -30,9 +30,9 @@ def main():
     random_array(5)
     """
     print(input_number())
-    """
     threading_test()
     thread_status_test()
+    """
     thread_data_pull()
     list_tests()
     """
