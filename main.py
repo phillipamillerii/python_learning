@@ -31,7 +31,7 @@ def main():
     bankdatabase.close()
     """
 
-    master_mind(random_number_list(3))
+    master_mind(random_number_list(3), 1)
     # info('Completed Main Function')
     print(space_variable)
 
@@ -42,8 +42,15 @@ def login(bankdatabase):
     bankdatabase.user_info(account, password)
 
 
-def master_mind(answer_list):
+def master_mind(answer_list, level):
     # print(answer_list)
+    game_count = 1 
+    if level == 1:
+        game_level = 20
+    elif level == 2:
+        game_level = 15
+    elif level == 3:
+        game_level = 10
 
     # show the number of inputs required
     list_len = len(answer_list)
@@ -74,7 +81,11 @@ def master_mind(answer_list):
                 # output to logs
                 # info('Call to input_number Function Successful')
                 # Return the integer value if successful
-                return integer_value
+                if len(str(abs(integer_value))) > 1:
+                    clear_entry(2)
+                    raise Exception("Please only enter one number at a time")
+                else:
+                    return integer_value
             except ValueError:
                 # Handle the error if the conversion fails
                 # warning('Call to input_number Function Failed')
@@ -101,12 +112,19 @@ def master_mind(answer_list):
                    
             if input_list == answer_list:
                 clear_entry(5)
+                print(input_list)
                 print("You Win!")
                 break
             
             else:
-                clear_entry(2)
-                print(input_list)
+                if game_count == game_level:
+                    clear_entry(game_level)
+                    print(answer_list)
+                    print("Game Failed!")
+                    break
+                else:
+                    clear_entry(2)
+                    game_count += 1
                 unique_list = list(dict.fromkeys(input_list))
                 correct_answers = 0
                 correct_location = 0
@@ -118,10 +136,12 @@ def master_mind(answer_list):
                     for x in range(len(input_list)):
                         if input_list[x] == answer_list[x]:
                             correct_location += 1
-
+                print(f"{input_list} - {correct_answers} : {correct_location}")
                 input_list.clear()   
                 for _ in range(list_len):
                     input_list.append('_')
+                
+        
                 
   
 if __name__ == "__main__":
