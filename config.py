@@ -1,6 +1,5 @@
 import random
 import array
-import logging
 
 # Threading tests
 import threading
@@ -15,17 +14,12 @@ import queue
 import sqlite3
 import bcrypt
 
+# Using for mastermind game
+import shutil
+
+
 # Global Variables  
 space_variable = "-----------------------------------------------"
 db_file = './data/bank.sqlite'
 app_log_file = 'main_log_file'
-log_level = logging.DEBUG
 
-logger = logging.getLogger('py_learning_script')
-logging.basicConfig(filename=app_log_file,
-                    filemode='a',
-                    format='%(asctime)s,%(msecs)03d %(name)s %(levelname)s : %(message)s',
-                    datefmt='%Y-%m-%d %H:%M:%S',
-                    level=log_level)
-
-logging.info("Running Python Learning Script")

@@ -19,9 +19,15 @@ def random_array(number_of_entries):
 
     # Because I'm printing the array after I return it I've converted it to a string to be output with other text
     # Will want to change this to a basic return in the future 
-    print(int_array)
-    print_array_elements(int_array)
-    logger.info("Random Array Created")
+    # print(int_array)
+    return int_array
+    # info("Random Array Created")
+
+def random_number_list(number_of_entries):
+    int_list = []
+    for _ in range(number_of_entries):
+        int_list.append(random.randint(0, 9))
+    return int_list
 
 def print_array_elements(array_to_print):
     # runs a process over every array element
@@ -38,22 +44,22 @@ def input_number():
             # Attempt to convert the input to an integer
             integer_value = int(user_input)
             # output to logs
-            logger.info('Call to input_number Function Successful')
+            # info('Call to input_number Function Successful')
             # Return the integer value if successful
             return integer_value
         except ValueError:
             # Handle the error if the conversion fails
-            logger.warning('Call to input_number Function Failed')
+            # warning('Call to input_number Function Failed')
             print(f"'{user_input}' is not a valid integer. Please try again.")
 
 def threading_test():
     # Used for starting a thread that is just sleeping
     def my_task(name, duration):
         print(f'Thread {name} Starting')
-        logger.info(f'Thread {name} Started')
+        # info(f'Thread {name} Started')
         time.sleep(duration)
         print(f'Thread {name} Finished.')
-        logger.info(f'Thread {name} Finished')
+        # info(f'Thread {name} Finished')
     
     # Create and start threads
     t1 = threading.Thread(target=my_task, args=("A", 5))
@@ -71,10 +77,10 @@ def thread_status_test():
     # tests  the thread is_alive process
     def my_task(name, duration):
         print(f"Thread {name} starting.")
-        logger.info(f'Thread {name} Started')
+        # info(f'Thread {name} Started')
         time.sleep(duration)
         print(f"Thread {name} Finished.")
-        logger.info(f'Thread {name} Finished')
+        # info(f'Thread {name} Finished')
 
     t3 = threading.Thread(target=my_task, args=("C", 2))
     t3.start()
@@ -86,8 +92,7 @@ def thread_status_test():
         print("Thread Alive")
     else:
         print("Thread Dead")
-    logger.info(f'thread_status_test Complete')
-
+    # info(f'thread_status_test Complete')
 
 
 # pulling data from a threaded process
@@ -193,7 +198,7 @@ class database:
         hashed = self.hash_password(password)
         self.cur.execute("INSERT INTO Users (user_name, user_password, funds, currency_code) values (?, ?, 0, 'USD')", (username, hashed))
         self.conn.commit()
-        logger.info('User Created')
+        # info('User Created')
 
     def update_userpassword(self, password, account):
         # May want to look into restricting this as it's not performing verifacation before updating the password
